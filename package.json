@@ -1,0 +1,24 @@
+{
+  "name": "tinyimprovements",
+  "version": "1.0.0",
+  "description": "07-homework",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shuchuan35/TinyImprovements.git"
+  },
+  "author": "Jennifer Hou",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shuchuan35/TinyImprovements/issues"
+  },
+  "homepage": "https://github.com/Shuchuan35/TinyImprovements#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongoose": "^5.4.15"
+  }
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tiny Improvements</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="/css/style.css"> -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="/js/app.js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
+            <a class="navbar-brand"><i class="fa fa-user" aria-hidden="true"></i> Tiny Improvements</a>
+            <!-- <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="/">Home</a>
+                <a class="nav-item nav-link" href="/manager">Manager</a>
+            </div>
+        </div> -->
+            <form class="form-inline">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-outline-info my-2 my-sm-0" id="view-kudo" data-toggle="modal"
+                    data-target="#kudo-modal"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Give Kudos</button>
+            </form>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div id="input-kudos"></div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div id="kudo-modal" class="modal fade" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="col-11 modal-title text-center">Give a Kudo!</h5>
+                    <button class="close float-right" data-dismiss="modal">x</button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <select name="fromuser" id="from-user" class="form-control btn btn-outline-info">
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <select name="touser" id="to-user" class="form-control">
+                                    <option selected>Select Receiver...</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="inputTitle" placeholder="Title">
+                        </div>
+                        <div class="form-group">
+                            <textarea type="text" class="form-control" id="inputBody"
+                                placeholder="Kudo Details"></textarea>
+                        </div>
+                        <!-- <button type="submit" class="btn btn-primary">Sign in</button> -->
+                    </form>
+                    <div id="from-user"></div>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-primary">Place the Order</button> -->
+                    <button id="submit-kudo" class="btn btn-info btn-sm" data-dismiss="modal">Give Kudos</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
