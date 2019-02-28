@@ -5,7 +5,6 @@ module.exports = function (app) {
 
     app.get('/api/kudos', function (req, res) {
         Kudo.find({})
-        .populate('fromuser')
             .then(function (data) {
                 res.json(data);
             })
@@ -16,7 +15,7 @@ module.exports = function (app) {
 
     app.get('/api/users', function (req, res) {
         User.find({})
-            .populate('kukos')
+            .populate('kudos')
             .then(function (data) {
                 res.json(data);
             })
@@ -35,16 +34,12 @@ module.exports = function (app) {
             });
     });
 
-    app.post('/api/kudos', function (req, res) {
-
-    });
-
     app.post('/api/kudo', function (req, res) {
-        const userId = req.body.userId;
+        const userId = req.body.toUser;
         const newEntry = {
             title: req.body.title,
             body: req.body.body,
-            fromuser: userId
+            fromuser: req.body.fromUser
         }
         Kudo.create(newEntry)
             .then(function (kudoData) {

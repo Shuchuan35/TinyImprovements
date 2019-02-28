@@ -4,10 +4,7 @@ const Schema = mongoose.Schema;
 const kudoSchema = new Schema({
     title: String,
     body: String,
-    fromuser: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    }
+    fromuser: String
 });
 
 const Kudo = mongoose.model('Kudo', kudoSchema);
