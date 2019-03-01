@@ -18,24 +18,18 @@
 
 <body>
     <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
+        <nav class="navbar navbar-expand-lg navbar-light justify-content-between">
             <a class="navbar-brand"><i class="fa fa-user" aria-hidden="true"></i> Tiny Improvements</a>
-            <!-- <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link" href="/">Home</a>
-                <a class="nav-item nav-link" href="/manager">Manager</a>
-            </div>
-        </div> -->
             <form class="form-inline">
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-outline-info my-2 my-sm-0" id="view-kudo" data-toggle="modal"
+                <button id="give-kudo" type="button" class="btn btn-outline-info my-2 my-sm-0" data-toggle="modal"
                     data-target="#kudo-modal"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Give Kudos</button>
             </form>
         </nav>
     </div>
     <div class="container">
         <div class="row">
-            <div id="input-kudos"></div>
+            <div id='kudos-view'></div>
         </div>
     </div>
     <!-- Modal -->
@@ -50,25 +44,21 @@
                     <form>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <select name="fromuser" id="from-user" class="form-control">
-                                </select>
+                                <select id="from-user" class="form-control"></select>
                             </div>
                             <div class="form-group col-md-6">
-                                <select name="touser" id="to-user" class="form-control">
-                                    <option selected>Select Receiver...</option>
-                                </select>
+                                <select id="to-user" class="form-control"></select>
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="input-title" placeholder="Title">
+                            <input id="input-title" type="text" class="form-control" placeholder="Title">
                         </div>
                         <div class="form-group">
-                            <textarea type="text" class="form-control" id="input-body"
+                            <textarea id="input-body" type="text" class="form-control"
                                 placeholder="Kudo Details"></textarea>
                         </div>
                         <!-- <button type="submit" class="btn btn-primary">Sign in</button> -->
                     </form>
-                    <div id="from-user"></div>
                 </div>
                 <div class="modal-footer">
                     <!-- <button type="button" class="btn btn-primary">Place the Order</button> -->
@@ -77,6 +67,7 @@
             </div>
         </div>
     </div>
+    <!-- End Modal -->
 </body>
 
 </html>

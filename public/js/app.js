@@ -1,6 +1,42 @@
 $(document).ready(function () {
+    const render = function(userList) {
+        // console.log('user list', userList.length);
+        for (let i = 0; i < userList.length; i++) {
+            // console.log('kudos[] length', userList[i].kudos.length);
+            if (userList[i].kudos.length > 0) {
+                const toUser = userList[i].username;
+                for (let j = 0; j < userList[i].kudos.length; j++) {
+                    const title = userList[i].kudos[j].title;
+                    const body = userList[i].kudos[j].body;
+                    const fromUser = userList[i].kudos[j].fromuser;
+                    $('#kudos-view').append(`
+                    <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">${title}</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">${toUser}</h6>
+                      <p class="card-text">${body}</p>
+                      <h6 class="card-subtitle mb-2 text-muted font-italic">~${fromUser} <i class="fa fa-smile-o" aria-hidden="true"></i></h6>
+                    </div>
+                  </div>`);
+                }
+            }
+        }
+    }
 
-    const render = function (userList) {
+    const getAllKudos = function() {
+        // $.get('/api/kudos')
+        // .then(function(data) {
+        //     console.log(data);
+        // });
+        $.get('/api/users')
+            .then(function (data) {
+                console.log(data);
+                render(data);
+            });
+    }
+    getAllKudos();
+
+    const populateUsers = function (userList) {
         $('#from-user').empty();
         $('#from-user').append(`<option selected>Select Sender...</option>`);
         $('#to-user').empty();
@@ -19,18 +55,10 @@ $(document).ready(function () {
         $.get('/api/users')
             .then(function (data) {
                 console.log(data);
-                render(data);
+                populateUsers(data);
             });
     }
-    $('#view-kudo').on('click', giveKudo);
-
-    const renderKudos = function(kudoList) {
-        console.log('kudo list', kudoList.length);
-        for (let i = 0; i < kudoList.length; i++) {
-            console.log('Hi');
-        }
-
-    }
+    $('#give-kudo').on('click', giveKudo);
 
     const postKudos = function(e) {
         e.preventDefault();
@@ -49,7 +77,7 @@ $(document).ready(function () {
 
         $.post('/api/kudo', newKudo)
         .then(function(data) {
-            console.log(data);
+            getAllKudos();
         });
     }
     $('#submit-kudo').on('click', postKudos);
