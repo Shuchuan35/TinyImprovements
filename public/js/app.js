@@ -1,42 +1,37 @@
 $(document).ready(function () {
-    const render = function(userList) {
-        // console.log('user list', userList.length);
-        for (let i = 0; i < userList.length; i++) {
-            // console.log('kudos[] length', userList[i].kudos.length);
-            if (userList[i].kudos.length > 0) {
-                const toUser = userList[i].username;
-                for (let j = 0; j < userList[i].kudos.length; j++) {
-                    const title = userList[i].kudos[j].title;
-                    const body = userList[i].kudos[j].body;
-                    const fromUser = userList[i].kudos[j].fromuser;
+    const render = function (kudoData) {
+        $('#kudos-view').empty();
+        for (let i = 0; i < kudoData.length; i++) {
+            const kudoId = kudoData[i]._id;
+            $.get(`/api/user/${kudoId}`)
+                .then(function (userData) {
+                    // console.log('userData touser', userData.username);
+                    const title = kudoData[i].title;
+                    const body = kudoData[i].body;
+                    const fromUser = kudoData[i].fromuser;
                     $('#kudos-view').append(`
                     <div class="card">
                     <div class="card-body">
-                      <h5 class="card-title">${title}</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">${toUser}</h6>
+                      <h5 class="card-title text-capitalize">${title}</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">${userData.username}</h6>
                       <p class="card-text">${body}</p>
                       <h6 class="card-subtitle mb-2 text-muted font-italic">~${fromUser} <i class="fa fa-smile-o" aria-hidden="true"></i></h6>
                     </div>
-                  </div>`);
-                }
-            }
+                  </div><br>`);
+                });
         }
     }
 
-    const getAllKudos = function() {
-        // $.get('/api/kudos')
-        // .then(function(data) {
-        //     console.log(data);
-        // });
-        $.get('/api/users')
+    const getAllKudos = function () {
+        $.get('/api/kudos')
             .then(function (data) {
-                console.log(data);
+                // console.log(data);
                 render(data);
             });
     }
     getAllKudos();
 
-    const populateUsers = function (userList) {
+    const populateSelect = function (userList) {
         $('#from-user').empty();
         $('#from-user').append(`<option selected>Select Sender...</option>`);
         $('#to-user').empty();
@@ -50,24 +45,24 @@ $(document).ready(function () {
         }
     }
 
-    const giveKudo = function (e) {
+    const getUsers = function (e) {
         e.preventDefault();
         $.get('/api/users')
             .then(function (data) {
-                console.log(data);
-                populateUsers(data);
+                // console.log(data);
+                populateSelect(data);
             });
     }
-    $('#give-kudo').on('click', giveKudo);
+    $('#give-kudo').on('click', getUsers);
 
-    const postKudos = function(e) {
+    const postKudos = function (e) {
         e.preventDefault();
-        const inpuTitle =  $('#input-title').val().trim();
-        const inputBody =  $('#input-body').val().trim();
+        const inpuTitle = $('#input-title').val().trim();
+        const inputBody = $('#input-body').val().trim();
         const fromUser = $('#from-user').val();
         const toUser = $('#to-user').val();
-        console.log('from user', fromUser);
-        console.log('to user', toUser);
+        // console.log('from user', fromUser);
+        // console.log('to user', toUser);
         const newKudo = {
             title: inpuTitle,
             body: inputBody,
@@ -76,9 +71,10 @@ $(document).ready(function () {
         }
 
         $.post('/api/kudo', newKudo)
-        .then(function(data) {
-            getAllKudos();
-        });
+            .then(function (data) {
+                console.log(data);
+                getAllKudos();
+            });
     }
     $('#submit-kudo').on('click', postKudos);
 });

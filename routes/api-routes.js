@@ -24,6 +24,16 @@ module.exports = function (app) {
             });
     });
 
+    app.get('/api/user/:id', function (req, res) {
+        User.findOne({kudos: req.params.id})
+        .then(function (data) {
+          res.json(data);
+        })
+        .catch(function (err) {
+          res.json(err);
+        });
+      });
+
     app.post('/api/users', function (req, res) {
         User.create(req.body)
             .then(function (data) {
