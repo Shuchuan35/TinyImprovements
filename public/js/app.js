@@ -12,7 +12,7 @@ $(document).ready(function () {
                     $('#kudos-view').append(`
                     <div class="card">
                     <div class="card-body">
-                      <h5 class="card-title text-capitalize">${title}</h5>
+                      <h5 class="card-title text-capitalize text-info">${title}</h5>
                       <h6 class="card-subtitle mb-2 text-muted">${userData.username}</h6>
                       <p class="card-text">${body}</p>
                       <h6 class="card-subtitle mb-2 text-muted font-italic">~${fromUser} <i class="fa fa-smile-o" aria-hidden="true"></i></h6>
