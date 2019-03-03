@@ -77,4 +77,18 @@ $(document).ready(function () {
             });
     }
     $('#submit-kudo').on('click', postKudos);
+
+    // const postUser = function(e) {
+    //     e.preventDefault();
+    //     const newUser = {
+    //        username:  $('#user').val().trim(),
+    //        kudos: []
+    //     }
+    //     $.post('/api/users', newUser)
+    //     .then(function(data){
+    //         console.log(data);
+    //     });
+    // }
+
+    // $('#add-user').on('click', postUser);
 });
