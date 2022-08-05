@@ -19,6 +19,6 @@
   "homepage": "https://github.com/Shuchuan35/TinyImprovements#readme",
   "dependencies": {
     "express": "^4.16.4",
-    "mongoose": "^5.4.15"
+    "mongoose": "^5.7.5"
   }
 }
